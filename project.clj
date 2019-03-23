@@ -9,7 +9,9 @@
                  [duct/module.ataraxy "0.3.0"]
                  [duct/module.sql "0.5.0"]
                  [org.postgresql/postgresql "42.2.5"]
-                 [duct/middleware.buddy "0.1.0"]]
+                 [duct/middleware.buddy "0.1.0"]
+                 [integrant "0.7.0"]
+                 [buddy/buddy-auth "2.1.0"]]
   :plugins [[duct/lein-duct "0.11.2"]]
   :main ^:skip-aot sampleapi.main
   :uberjar-name "sampleapi-standalone.jar"
