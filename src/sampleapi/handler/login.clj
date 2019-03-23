@@ -3,15 +3,15 @@
             [ataraxy.response :as response]
             [integrant.core :as ig]))
 
-(defn find-user [_db body]
-  (when (and (= (:username body) "foo")
-             (= (:password body) "bar"))
+(defn find-user [_db username password]
+  (when (and (= username "foo")
+             (= password "bar"))
     {:id 998}))
 
 (defmethod ig/init-key :sampleapi.handler/login [_ {:keys [db secret]}]
   (do (println "HERE")
-      (fn [{[_kw body] :ataraxy/result}]
-        (do (println body)
-            (if-let [user (find-user db body)]
+      (fn [{[_kw username password] :ataraxy/result}]
+        (do (println username password)
+            (if-let [user (find-user db username password)]
               [::response/ok {:token (jwt/sign {:user (:id user)} secret)}]
               [::response/bad-request "Failed!"])))))

@@ -2,9 +2,9 @@
                       {:duct.core/project-ns                 sampleapi
 
                        :duct.router/ataraxy
-                                                             {:routes     {[:get "/example"]                                    [:sampleapi.handler/example]
-                                                                           [:get "/whoami"]                                     ^:jws-auth [:sampleapi.handler/whoami]
-                                                                           [:post "/login" {body :body}] [:sampleapi.handler/login body]}
+                                                             {:routes     {[:get "/example"]                                                         [:sampleapi.handler/example]
+                                                                           [:get "/whoami"]                                                          ^:jws-auth [:sampleapi.handler/whoami]
+                                                                           [:post "/login" {{username "username" password "password"} :form-params}] [:sampleapi.handler/login username password]}
 
                                                               :middleware {:jws-auth #ig/ref :duct.middleware.buddy/authentication}}
 
