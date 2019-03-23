@@ -10,7 +10,7 @@
    :jws     backend/jws
    :jwe     backend/jwe})
 
-(defmethod ig/init-key :sampleapi.middleware.buddy/authentication
+(defmethod ig/init-key :sampleapi.middleware/buddy
   [_ {:keys [backend] :as config}]
   (let [backend-fn (backends backend)
         config (dissoc config :backend)]

@@ -1,19 +1,19 @@
 {:duct.profile/base
-                      {:duct.core/project-ns                      sampleapi
+                      {:duct.core/project-ns       sampleapi
 
                        :duct.router/ataraxy
-                                                                  {:routes     {[:get "/example"] [:sampleapi.handler/example]
-                                                                                [:get "/whoami"]  [:sampleapi.handler/whoami]}
+                                                   {:routes     {[:get "/example"] [:sampleapi.handler/example]
+                                                                 [:get "/whoami"]  ^:jws-auth [:sampleapi.handler/whoami]}
 
-                                                                   :middleware {:jws-auth #ig/ref :sampleapi.middleware.buddy/authentication}}
+                                                    :middleware {:jws-auth #ig/ref :sampleapi.middleware/buddy}}
 
                        :sampleapi.handler/example
-                                                                  {:db #ig/ref :duct.database/sql}
+                                                   {:db #ig/ref :duct.database/sql}
 
-                       :sampleapi.handler/whoami                  {}
+                       :sampleapi.handler/whoami   {}
 
-                       :sampleapi.middleware.buddy/authentication {:backend :jws
-                                                                   :secret  "MY_SECRET"}}
+                       :sampleapi.middleware/buddy {:backend :jws
+                                                    :secret  "MY_SECRET"}}
 
  :duct.profile/dev    #duct/include "dev"
  :duct.profile/local  #duct/include "local"
