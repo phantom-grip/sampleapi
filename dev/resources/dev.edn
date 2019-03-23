@@ -1,2 +1,2 @@
 {:duct.database/sql
- {:connection-uri "jdbc:postgresql://localhost/postgres"}}
+ {:connection-uri "jdbc:postgresql://ec2-54-247-70-127.eu-west-1.compute.amazonaws.com:5432/dfv1hqn33ntn9u?user=wrrrkikzdtehcx&password=d9856c59151b336c6738bcced7ffcfa2a174fe30dd1d77828cf58fab23bef817"}}
