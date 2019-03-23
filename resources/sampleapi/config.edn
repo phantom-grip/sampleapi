@@ -2,17 +2,23 @@
                       {:duct.core/project-ns                 sampleapi
 
                        :duct.router/ataraxy
-                                                             {:routes     {[:get "/example"]                                                         [:sampleapi.handler/example]
-                                                                           [:get "/whoami"]                                                          ^:jws-auth [:sampleapi.handler/whoami]
-                                                                           [:post "/login" {{username "username" password "password"} :form-params}] [:sampleapi.handler/login username password]}
+                                                             {:routes     {[:get "/example"]
+                                                                           [:sampleapi.handler/example]
+                                                                           [:get "/whoami"]
+                                                                           ^:jws-auth [:sampleapi.handler.user/whoami]
+                                                                           [:post "/login" {{username "username" password "password"} :form-params}]
+                                                                           [:sampleapi.handler.user/login username password]
+                                                                           [:post "/create" {{username "username" password "password" email "email"} :form-params}]
+                                                                           [:sampleapi.handler.user/create email username password]}
 
                                                               :middleware {:jws-auth #ig/ref :duct.middleware.buddy/authentication}}
 
                        :sampleapi.handler/example
                                                              {:db #ig/ref :duct.database/sql}
 
-                       :sampleapi.handler/whoami             {}
-                       :sampleapi.handler/login              {:db     #ig/ref :duct.database/sql
+                       :sampleapi.handler.user/whoami        {}
+                       :sampleapi.handler.user/create        {:db #ig/ref :duct.database/sql}
+                       :sampleapi.handler.user/login         {:db     #ig/ref :duct.database/sql
                                                               :secret "MY_SECRET"}
 
                        :duct.middleware.buddy/authentication {:backend :jws

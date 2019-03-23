@@ -11,7 +11,12 @@
                  [org.postgresql/postgresql "42.2.5"]
                  [duct/middleware.buddy "0.1.0"]
                  [integrant "0.7.0"]
-                 [buddy/buddy-auth "2.1.0"]]
+                 [buddy/buddy-auth "2.1.0"]
+                 [duct/handler.sql "0.3.1"]
+                 [buddy/buddy-hashers "1.3.0"]
+                 [walkable "1.2.0-SNAPSHOT"]
+                 [org.clojure/core.async "0.4.490"]
+                 [org.clojure/java.jdbc "0.7.9"]]
   :plugins [[duct/lein-duct "0.11.2"]]
   :main ^:skip-aot sampleapi.main
   :uberjar-name "sampleapi-standalone.jar"
